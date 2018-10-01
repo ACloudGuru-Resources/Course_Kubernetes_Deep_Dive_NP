@@ -1,0 +1,16 @@
+{
+"kind" : "Policy",
+"apiVersion" : "v1",
+"extenders" : [
+	{
+        "urlPrefix": "http://127.0.0.1:12346/scheduler",
+        "filterVerb": "filter",
+        "bindVerb": "bind",
+        "prioritizeVerb": "prioritize",
+        "preemptVerb": "preempt",
+        "weight": 5,
+        "enableHttps": false,
+        "nodeCacheCapable": false
+	}
+    ]
+}

@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: selenium-node-firefox 
+  labels:
+    app: selenium-node-firefox
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: selenium-node-firefox
+  template:
+    metadata:
+      labels:
+        app: selenium-node-firefox
+    spec:
+      volumes:                          
+      - name: dshm
+        emptyDir:
+          medium: Memory
+      containers:
+      - name: selenium-node-firefox
+        image: selenium/node-firefox-debug:3.11
+        ports:
+          - containerPort: 5900 
+        volumeMounts:
+          - mountPath: /dev/shm
+            name: dshm
+        env:
+          - name: HUB_PORT_4444_TCP_ADDR 
+            value: "selenium-hub"
+          - name: HUB_PORT_4444_TCP_PORT 
+            value: "4444"
+        resources:
+          limits:
+            memory: "1000Mi"
+            cpu: ".5"
