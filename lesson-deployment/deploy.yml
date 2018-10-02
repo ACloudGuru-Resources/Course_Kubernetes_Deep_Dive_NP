@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    run: test
+  name: test
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      run: test
+  minReadySeconds: 5
+  strategy:
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 0
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        run: test
+    spec:
+      containers:
+      - image: nginx:1.12
+        name: nginx

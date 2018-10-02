@@ -1,0 +1,12 @@
+kind: StorageClass
+apiVersion: storage.k8s.io/v1
+metadata:
+  name: portworx-db-secure
+provisioner: kubernetes.io/portworx-volume
+parameters:
+  fs: "xfs"
+  block_size: "32"
+  repl: "2"
+  snap_interval: "30"
+  io-priority: "medium"
+  secure: "true"
