@@ -5,9 +5,9 @@ metadata:
 spec:
   volumes:
     - name: data
-    persistentVolumeClaim:
-      claimName: pvc1
-containers:
+      persistentVolumeClaim:
+        claimName: pvc1
+  containers:
   - name: ubuntu-ctr
     image: ubuntu:latest
     command:
@@ -16,5 +16,5 @@ containers:
     - "sleep 60m"
     imagePullPolicy: IfNotPresent
     volumeMounts:
-    - mountpath: /data
+    - mountPath: /data
       name: data
