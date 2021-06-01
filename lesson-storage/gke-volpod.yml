@@ -16,5 +16,5 @@ containers:
     - "sleep 60m"
     imagePullPolicy: IfNotPresent
     volumeMounts:
-    - mountpath: /data
+    - mountPath: /data
       name: data
