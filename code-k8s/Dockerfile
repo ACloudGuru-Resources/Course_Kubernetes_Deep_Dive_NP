@@ -1,11 +1,9 @@
 FROM centos:centos7
 
-LABEL MAINTAINER=nigelpoulton@hotmail.com
-
 # Install Node etc...
-RUN yum -y update; yum clean all
-RUN yum -y install epel-release; yum clean all
-RUN yum -y install nodejs npm; yum clean all
+RUN apt update -y; apt clean all
+RUN apt install -y  epel-release; apt clean all
+RUN apt install -y nodejs npm; apt clean all
 
 # Copy source code to /src in container
 COPY . /src
